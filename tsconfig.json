@@ -1,0 +1,50 @@
+{
+  //tsconfig.json:simple and modern for node 18+,express,jest and tsx
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    //platform and module system
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2022",
+    "lib": ["ES2022"],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    // interop and dx
+    "esModuleInterop": true,
+    "resolveJsonModule":true,
+    "types":["node", "jest"],
+    // Strictness and safety
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "isolatedModules":true,
+    "skipLibCheck": true,
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // output (boleh diabaikan saat dev dengan tsx, tapi berguna untuk build)
+    "outDir":"dist",
+    "sourceMap":true,
+    //declarations off
+    "declaration": false
+  },
+  "include": [
+    "utils.ts",
+    "services/**/*.ts",
+    "**/*.test.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
