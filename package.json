@@ -11,7 +11,7 @@
     "dev:notif": "tsx services/notification-service/src/index.ts",
     "test": "jest",
     "lint:api": "spectral lint openapi/api.yaml",
-    "mock": "prism mock openapi/api.yaml"
+    "mock": "npx @stoplight/prism-cli mock openapi/api.yaml"
   },
   "keywords": [],
   "author": "",
