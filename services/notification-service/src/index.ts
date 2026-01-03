@@ -1,6 +1,34 @@
 import express from 'express';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import {
+  httpLogger,
+  correlationId,
+  requireBearer,
+  errorHandler
+} from '../../../utils';
 
 const app = express();
-//Belum ada route dan middleware (sengaja agar tes RED dulu)
+/**urutan: correlation -> helmet -> logger -> auth -> rate-limit -> routes -> error */
+app.use(correlationId);
+app.use(helmet());
+app.use(requireBearer);
+app.use(httpLogger);
+app.use(rateLimit({ windowMs: 60_000, max: 120, standardHeaders: true, legacyHeaders: false }));
+
+app.get('/notifications', requireBearer, (req, res) => {
+  const limit = Math.max(1, Math.min(100, Number(req.query.limit) || 10));
+
+  const data = Array.from({ length: Math.min(1, limit) }).map((_, i) => ({
+    id: `n${i + 1}`,
+    type: 'ORDER_CREATED',
+    message: 'Order created successfully',
+    createdAt: new Date().toISOString(),
+  }));
+
+  res.status(200).json({ data, total: data.length });
+});
+
+app.use(errorHandler);
 
 export default app;

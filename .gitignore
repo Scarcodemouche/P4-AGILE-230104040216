@@ -1,5 +1,6 @@
 node_modules/
 dist/
-coverage/
+hardening_logs/
+mock_logs/
+req_*.json
 .env
-.DS_Store
