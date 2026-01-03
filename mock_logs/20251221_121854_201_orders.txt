@@ -1,0 +1,12 @@
+﻿HTTP/1.1 201 Created
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: *
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: *
+Content-type: application/json
+Content-Length: 84
+Date: Sun, 21 Dec 2025 16:30:05 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+{"id":"string","productId":"string","quantity":0,"createdAt":"2019-08-24T14:15:22Z"}

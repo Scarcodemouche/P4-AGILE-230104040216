@@ -1,6 +1,4 @@
 node_modules/
 dist/
-hardening_logs/
-mock_logs/
 req_*.json
 .env
